@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "247540373247",
+    "firebase_url": "https://pollycodechallenge.firebaseio.com",
+    "project_id": "pollycodechallenge",
+    "storage_bucket": "pollycodechallenge.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:247540373247:android:531c3747ff68de68",
+        "android_client_info": {
+          "package_name": "com.example.admin.pollycodechallenge"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "247540373247-titqfg9kdb38gnara3np7cp2287hcr4b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.admin.pollycodechallenge",
+            "certificate_hash": "7e9177d4e06c20366efa1291a50e2e7bd4e28e60"
+          }
+        },
+        {
+          "client_id": "247540373247-b4rqccn4obulir4ck7gie1go19q560rh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuLr4B1f8RkVn6at9FPTHepxEIr0MM1p4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "247540373247-b4rqccn4obulir4ck7gie1go19q560rh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
