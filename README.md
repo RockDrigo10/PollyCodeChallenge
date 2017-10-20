@@ -26,3 +26,7 @@ This code includes the next libraries:
 - Retrofit
 - RxJava
 
+## User statistics
+
+- Answers
+- Crashlytics
