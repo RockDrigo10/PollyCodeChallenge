@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="100dp">
 
@@ -28,7 +29,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            tools:ignore="UselessParent">
 
 
             <de.hdodenhof.circleimageview.CircleImageView
@@ -39,7 +41,8 @@
                 android:layout_marginTop="10dp"
                 android:src="@drawable/partylogo"
                 app:civ_border_color="#999999"
-                app:civ_border_width="1dp" />
+                app:civ_border_width="1dp"
+                tools:ignore="RtlHardcoded" />
 
             <TextView
                 android:id="@+id/textView"
@@ -50,7 +53,8 @@
                 android:text="@string/home"
                 android:textSize="20sp"
                 android:textColor="@color/tw__composer_black"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="RtlHardcoded" />
         </LinearLayout>
 
     </LinearLayout>

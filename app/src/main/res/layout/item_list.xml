@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="24dp"
             android:layout_marginTop="8dp"
-            android:text="TextView"
+            android:text="@string/textview"
             app:layout_constraintLeft_toRightOf="@+id/picture"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginStart="24dp" />
@@ -49,7 +49,9 @@
             app:layout_constraintTop_toTopOf="@+id/name"
             app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/ic_veriified"
-            android:layout_marginStart="4dp" />
+            android:layout_marginStart="4dp"
+            android:contentDescription=""
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/screenName"
@@ -57,7 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
-            android:text="TextView"
+            android:text="@string/textview1"
             app:layout_constraintLeft_toRightOf="@+id/check"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginStart="8dp" />
@@ -67,7 +69,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="6dp"
-            android:text="•"
+            android:text="@string/space"
             app:layout_constraintLeft_toRightOf="@+id/screenName"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="8dp"
@@ -79,7 +81,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="8dp"
-            android:text="TextView"
+            android:text="@string/textview2"
             app:layout_constraintLeft_toRightOf="@+id/textView4"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginStart="5dp" />
@@ -93,7 +95,8 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_arrow"
-            android:layout_marginEnd="8dp" />
+            android:layout_marginEnd="8dp"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/description"
@@ -102,7 +105,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="8dp"
             android:layout_marginTop="7dp"
-            android:text="TextView"
+            android:text="@string/textview3"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/name"
             app:layout_constraintHorizontal_bias="0.0"
@@ -122,7 +125,8 @@
             app:layout_constraintTop_toBottomOf="@+id/description"
             app:srcCompat="@drawable/googleg_standard_color_18"
             app:layout_constraintLeft_toLeftOf="@+id/description"
-            android:layout_marginEnd="8dp" />
+            android:layout_marginEnd="8dp"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:drawablePadding="10dp"
@@ -131,11 +135,12 @@
             android:layout_height="25dp"
             android:layout_marginTop="8dp"
             android:drawableLeft="@drawable/ic_retweet"
-            android:text="adsasa"
+            android:text="@string/retweet"
             android:textAlignment="textEnd"
             app:layout_constraintLeft_toRightOf="@+id/comments"
             app:layout_constraintTop_toBottomOf="@+id/image"
-            app:layout_constraintRight_toLeftOf="@+id/likes" />
+            app:layout_constraintRight_toLeftOf="@+id/likes"
+            tools:ignore="RtlHardcoded" />
 
         <TextView
             android:id="@+id/likes"
@@ -143,11 +148,12 @@
             android:layout_height="25dp"
             android:layout_marginTop="8dp"
             android:drawableLeft="@drawable/ic_like"
-            android:text="adsasa"
+            android:text="@string/like"
             android:textAlignment="textEnd"
             app:layout_constraintLeft_toRightOf="@+id/retweet"
             app:layout_constraintTop_toBottomOf="@+id/image"
-            app:layout_constraintRight_toLeftOf="@+id/message" />
+            app:layout_constraintRight_toLeftOf="@+id/message"
+            tools:ignore="RtlHardcoded" />
 
         <TextView
             android:drawablePadding="10dp"
@@ -156,14 +162,15 @@
             android:layout_height="24dp"
             android:layout_marginTop="8dp"
             android:drawableLeft="@drawable/ic_comment"
-            android:text="adsasa"
+            android:text="@string/comments"
             android:textAlignment="textEnd"
             app:layout_constraintLeft_toLeftOf="@+id/image"
             app:layout_constraintTop_toBottomOf="@+id/image"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="16dp"
             app:layout_constraintVertical_bias="0.0"
-            android:layout_marginLeft="0dp" />
+            android:layout_marginLeft="0dp"
+            tools:ignore="RtlHardcoded" />
 
         <ImageButton
             android:scaleType="fitXY"
@@ -176,7 +183,8 @@
             app:layout_constraintLeft_toRightOf="@+id/likes"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/image"
-            app:srcCompat="@drawable/ic_message" />
+            app:srcCompat="@drawable/ic_message"
+            tools:ignore="ContentDescription" />
 
 
     </android.support.constraint.ConstraintLayout>
