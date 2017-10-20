@@ -17,17 +17,11 @@ import com.example.admin.pollycodechallenge.App;
 import com.example.admin.pollycodechallenge.Injection.mainactivity.DaggerMainActivityComponent;
 import com.example.admin.pollycodechallenge.Injection.mainactivity.MainActivityModule;
 import com.example.admin.pollycodechallenge.R;
-import com.example.admin.pollycodechallenge.model.TweetM;
 import com.example.admin.pollycodechallenge.view.loginview.loginActivity;
 import com.google.firebase.auth.FirebaseAuth;
-import com.twitter.sdk.android.core.Callback;
-import com.twitter.sdk.android.core.Result;
-import com.twitter.sdk.android.core.TwitterException;
 import com.twitter.sdk.android.core.models.Tweet;
-import com.twitter.sdk.android.tweetui.CollectionTimeline;
-import com.twitter.sdk.android.tweetui.SearchTimeline;
-import com.twitter.sdk.android.tweetui.TimelineResult;
-import com.twitter.sdk.android.tweetui.TweetTimelineRecyclerViewAdapter;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -39,7 +33,7 @@ import retrofit2.Retrofit;
 
 public class MainView extends AppCompatActivity implements MainContract.View {
 
-    @BindView(R.id.civProfilePicture)
+    @BindView(R.id.picture)
     CircleImageView civProfilePicture;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -58,6 +52,7 @@ public class MainView extends AppCompatActivity implements MainContract.View {
     TabLayout tab_layout;
     @BindView(R.id.activity_main_swipe_refresh_layout)
     SwipeRefreshLayout activityMainSwipeRefreshLayout;
+    private List<Tweet> tweets;
 
 
     @Override
@@ -127,39 +122,24 @@ public class MainView extends AppCompatActivity implements MainContract.View {
         recycler.setDrawingCacheEnabled(true);
         recycler.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
 
-        final SearchTimeline searchTimeline = new SearchTimeline.Builder()
-                .query("#usa")
-                .maxItemsPerRequest(550)
-                .build();
-        final TweetTimelineRecyclerViewAdapter adapter =
-                new TweetTimelineRecyclerViewAdapter.Builder(this)
-                        .setTimeline(searchTimeline)
-                        .setViewStyle(R.style.tw__TweetLightWithActionsStyle)
-                        .build();
-
-        recycler.setAdapter(adapter);
         activityMainSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 activityMainSwipeRefreshLayout.setRefreshing(true);
-                adapter.refresh(new Callback<TimelineResult<Tweet>>() {
-                    @Override
-                    public void success(Result<TimelineResult<Tweet>> result) {
-                        activityMainSwipeRefreshLayout.setRefreshing(false);
-                    }
-
-                    @Override
-                    public void failure(TwitterException exception) {
-                        // Toast or some other action
-                    }
-                });
+                presenter.makeRestCall(retrofit);
             }
         });
 
     }
 
     @Override
-    public void sendInfo(TweetM value) {
+    public void sendInfo(List<Tweet> value) {
+        FirstAdapter firstAdapter = new FirstAdapter(value);
+        recycler.setAdapter(firstAdapter);
+        firstAdapter.notifyDataSetChanged();
 
+        this.tweets = value;
+        activityMainSwipeRefreshLayout.setRefreshing(false);
     }
 }
+

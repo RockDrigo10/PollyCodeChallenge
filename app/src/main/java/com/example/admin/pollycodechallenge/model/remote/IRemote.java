@@ -1,8 +1,9 @@
 package com.example.admin.pollycodechallenge.model.remote;
 
-import com.example.admin.pollycodechallenge.model.TweetM;
+import com.twitter.sdk.android.core.models.Tweet;
 
-import io.reactivex.Observable;
+import java.util.List;
+
 import retrofit2.Call;
 
 /**
@@ -11,7 +12,5 @@ import retrofit2.Call;
 
 public interface IRemote {
 
-    void sendCall(Call<TweetM> call);
-
-    void sendObservable(Observable<TweetM> TweetObservable);
+    void sendCall(Call<List<Tweet>> call);
 }

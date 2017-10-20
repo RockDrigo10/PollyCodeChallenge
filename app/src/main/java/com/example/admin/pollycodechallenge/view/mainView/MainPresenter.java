@@ -1,25 +1,21 @@
 package com.example.admin.pollycodechallenge.view.mainView;
 
-import android.content.Context;
-
-import com.example.admin.pollycodechallenge.model.TweetM;
 import com.example.admin.pollycodechallenge.model.remote.IRemote;
 import com.example.admin.pollycodechallenge.model.remote.Remote;
+import com.twitter.sdk.android.core.Callback;
+import com.twitter.sdk.android.core.Result;
+import com.twitter.sdk.android.core.TwitterException;
+import com.twitter.sdk.android.core.models.Tweet;
 
-import io.reactivex.Observable;
-import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Retrofit;
 
 public class MainPresenter implements MainContract.Presenter, IRemote {
 
     MainContract.View view;
-    Context context;
     private static final String TAG = "MainPresenter";
-
 
     private Remote iRemote;
 
@@ -33,42 +29,23 @@ public class MainPresenter implements MainContract.Presenter, IRemote {
     }
 
     @Override
-    public void sendCall(Call<TweetM> call) {
+    public void sendCall(Call<List<Tweet>> call) {
+        call.enqueue(new Callback<List<Tweet>>() {
+            @Override
+            public void success(Result<List<Tweet>> result) {
+                //Do something with result
+                view.sendInfo(result.data);
+            }
 
-    }
-
-    @Override
-    public void sendObservable(Observable<TweetM> TweetObservable) {
-        TweetObservable
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .unsubscribeOn(Schedulers.io())
-                .subscribe(new Observer<TweetM>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(TweetM value) {
-                        view.sendInfo(value);
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        view.showError(e.getMessage());
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
+            public void failure(TwitterException exception) {
+                //Do something on failure
+            }
+        });
     }
 
     @Override
     public void makeRestCall(Retrofit retrofit) {
         iRemote = new Remote(this);
-        iRemote.getTweetObs(retrofit);
+        iRemote.getTweetkCall(retrofit);
     }
 }
